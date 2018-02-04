@@ -9,17 +9,17 @@ function setConnected(connected) {
     else {
         $("#conversation").hide();
     }
-    $("#greetings").html("");
+    $("#informative-content").html("");
 }
 
 function connect() {
-    var socket = new SockJS('/gs-guide-websocket');
+    var socket = new SockJS('/informative-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+        stompClient.subscribe('/informative/new', function (newInformative) {
+            showInformative(JSON.parse(newInformative.body).content);
         });
     });
 }
@@ -32,18 +32,14 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
-}
-
 function sendInformative() {
 	var html = $('#summernote').summernote('code');
 	console.log(html);
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': html}));
+    stompClient.send("/informative", {}, JSON.stringify({'content': html}));
 }
 
-function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+function showInformative(body) {
+    $("#informative-content").append("<tr><td>" + body + "</td></tr>");
 }
 
 $(function () {
@@ -52,7 +48,6 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#send" ).click(function() { sendName(); });
     $( "#sendInformative" ).click(function() { sendInformative(); });
 });
 

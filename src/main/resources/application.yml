@@ -1,0 +1,19 @@
+server:
+  address: localhost
+  context-path: /
+  port: 8080
+spring:
+  application:
+    name: informative
+  datasource:
+    url: jdbc:postgresql://localhost:5432/informative
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    properties:
+      hibernate:
+        show_sql=true
+        format_sql=true

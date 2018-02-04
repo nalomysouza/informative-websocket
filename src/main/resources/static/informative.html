@@ -3,8 +3,8 @@
 <head>
 	<title>Informative WebSocket</title>
 	<meta charset="UTF-8">
+
 	<link rel="stylesheet" href="/css/main.css"/>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css"/>
 </head>
@@ -27,39 +27,21 @@
 		</div>
 
 		<div class="row">
-			<form class="form-inline">
-				<div class="form-group">
-					<label for="name">Informativo</label>
-				</div>
-				<div id="summernote">
-					<p>Hello. My name is Nalomy, is my first Informative. Very Good!</p>
-				</div>
-				<script>
-					$(document).ready(function() {
-						$('#summernote').summernote();
-					});
-				</script>
-				<button id="sendInformative" class="btn btn-default" type="submit">Send Informative</button>
-			</form>
-		</div>
-
-
-		<div class="row">
 			<div class="col-md-12">
 				<table id="conversation" class="table table-striped">
 					<thead>
 						<tr>
-							<th>Greetings</th>
+							<th>Body Informative:</th>
 						</tr>
 					</thead>
-					<tbody id="greetings">
+					<tbody id="informative-content">
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 
-	
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
